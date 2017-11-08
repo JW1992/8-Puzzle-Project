@@ -59,8 +59,8 @@ public class Board {
     	if(nDimension==1) return this;
 	    if(nZeroPos[0]!=0){
 	    	int nTemp = nBlock[0][0];
-	    	nBlock[0][1] = nBlock[0][0];
-	    	nBlock[0][0] = nTemp;
+	    	nBlock[0][0] = nBlock[0][1];
+	    	nBlock[0][1] = nTemp;
 	    	Board tempBoard = new Board(nBlock);
 	    	nBlock[0][1] = nBlock[0][0];
 	    	nBlock[0][0] = nTemp;
@@ -68,8 +68,8 @@ public class Board {
 	    }
 	    else{
 	    	int nTemp = nBlock[1][0];
-	    	nBlock[1][1] = nBlock[1][0];
-	    	nBlock[1][0] = nTemp;
+	    	nBlock[1][0] = nBlock[1][1];
+	    	nBlock[1][1] = nTemp;
 	    	Board tempBoard = new Board(nBlock);
 	    	nBlock[1][1] = nBlock[1][0];
 	    	nBlock[1][0] = nTemp;
@@ -83,7 +83,7 @@ public class Board {
     	if(! (y instanceof Board)) return false;
     	Board tempBoard = (Board)y;
     	if(this.dimension()!=tempBoard.dimension()) return false;
-    	return (this.toString() == tempBoard.toString());
+    	return (this.toString().equals(tempBoard.toString()));
     }
     public Iterable<Board> neighbors()     // all neighboring boards
     {
@@ -158,6 +158,9 @@ public class Board {
     		StdOut.println(bTemp.manhattan());
     		StdOut.println(bTemp.toString());
     	}
+    	Board tempB2 = new Board(nTemp);
+    	if(tempB.equals(tempB2)) StdOut.println("Same");
+    	else StdOut.println("Not same");
     }
     
     
